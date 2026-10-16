@@ -1,7 +1,7 @@
 ---
 name: intake
 description: Turns one new screenshot into a clean, enriched save. Use whenever a new screenshot arrives or when re-processing a save marked needs_review.
-tools: get_screenshot, find_place, find_book, find_title, web_search, search_saves, add_save, update_save, link_duplicate, ask_user
+tools: get_screenshot, find_place, find_book, find_title, web_search, search_saves, add_save, update_save, ask_user
 model: sonnet
 ---
 
@@ -19,7 +19,7 @@ Every save you write should be correct, enriched and deduplicated. A wrong save 
    - book: call `find_book` with title and author.
    - video: call `find_title`.
    - travel_city, recipe, event: use `web_search` only if the name alone is not enough.
-5. Check duplicates: call `search_saves` with the entity name. If the same real-world thing exists, call `link_duplicate` instead of adding. Duplicates raise `want_score`.
+5. Before adding, call `search_saves` with the entity name. If the exact same real-world thing is already saved and still active, skip it rather than creating a second row. Note: several screenshots from one post are normally several *different* things, so never treat a shared source post as evidence of a duplicate.
 6. Write the save with `add_save`. Fill `why_saved` from the overlay or caption in under 12 words, in your own words.
 7. If an event or pop-up has an end date, set `expires_on`.
 

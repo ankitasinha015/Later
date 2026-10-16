@@ -18,7 +18,6 @@ The description of each tool is what the agent reads, so keep descriptions exact
 | lat, lng | float or null | places only |
 | external_id | str or null | Google place id, Open Library key, TMDB id |
 | details | json | hours, author, runtime, etc. from enrichment |
-| want_score | int | 1 + number of duplicates merged |
 | confidence | float | 0 to 1, from Intake |
 | evidence | str | what Intake actually read to decide. Under 30 words |
 | expires_on | date or null | events and pop-ups |
@@ -35,7 +34,6 @@ The description of each tool is what the agent reads, so keep descriptions exact
 | update_save | id, fields | Save | never deletes |
 | get_save | id | Save | |
 | get_screenshot | screenshot_id | image | Intake only |
-| link_duplicate | save_id, screenshot_id | Save | adds screenshot, +1 want_score. WARNING: real screenshots are mostly several *different* entities from one post, not repeats of one. Do not fire this on shared `source_post_id`. Untested, no duplicates in the eval set yet |
 
 ## Phase 2 tools: enrichment
 
@@ -65,6 +63,24 @@ The description of each tool is what the agent reads, so keep descriptions exact
 | ask_user | Telegram inline buttons | returns immediately; answer arrives as a later event |
 | create_calendar_event | Google Calendar API, write | concierge only, needs Yes unless auto-allowed |
 | create_trip_list | backend | returns a shareable in-app list |
+
+## Removed 2026-10-15: want_score and link_duplicate
+
+Both assumed the same real-world thing gets screenshotted repeatedly, and that
+merging those repeats into one save with a rising score would signal how much
+Ankita wants it.
+
+Real saving does not work that way. Screenshots come in groups from a single
+post, each capturing a *different* entity: five books from one video, four
+venues from one carousel. There are no repeats to merge. Worse, a dedup pass
+that keyed on the source post would collapse five distinct books into one save.
+
+The Planner never needed it. Its ranking already runs on calendar free blocks,
+weather, `expires_on`, open-now, taste, skip history and geographic grouping.
+`want_score` was one boost out of eight.
+
+Intake still avoids creating two rows for the same entity, but that is a check
+before insert, not a tool and not a score.
 
 ## Rules for writing tools
 - Every tool returns JSON with plain field names. Errors return `{"error": "...", "hint": "..."}` so the agent can recover.

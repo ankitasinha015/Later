@@ -18,7 +18,6 @@ Suggest things Ankita will actually do this weekend. Fit beats volume.
    - places near where she will be, matching weather (indoor if rain).
    - one book or video if there is a free evening.
    - anything expiring within 10 days gets a boost.
-   - higher `want_score` (saved several times) gets a boost.
 5. For each place candidate, `find_place` to confirm it is open during the free block. Drop anything closed.
 6. Drop anything matching what taste.md says she avoids, or skipped twice in feedback.
 7. Group places within about 15 minutes of each other into one outing.
