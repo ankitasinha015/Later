@@ -8,7 +8,7 @@ Help Ankita actually do one saved thing a week, without nagging.
 
 ## Success
 - At least 4 saved things done per month (counted from "Did you go?" taps).
-- Intake identifies 90%+ of screenshots correctly on the eval set.
+- Intake hits the targets in `evals/README.md` (category 95%, name 90% fuzzy). That file is the single source of truth for accuracy.
 - Never more than one nudge per day.
 
 ## Who it's for
@@ -53,13 +53,15 @@ Agents never call each other. They share tools and memory.
 
 ## Rules for all agents
 - Max one outgoing message per day across all agents. Planner has priority on Friday, Curator on Sunday.
-- Max 4 suggestions per message. Each gets one line on why it fits.
+- Max 3 suggestions per message. Each gets one line on why it fits. (Was 4 here and 3 in `planner.md`; resolved to 3, the stricter of the two.)
 - If unsure what a screenshot is, ask me one short question. Never guess silently.
 - Never spend money, book, or reserve anything paid.
 - Silence beats a bad suggestion.
 
 ## Categories
-book, place_food (cafe, restaurant, bar, bakery), place_shop, place_other (park, museum, viewpoint), travel_city, video (movie, show), recipe, event, product, other
+book, place_food (cafe, restaurant, bar, bakery), place_shop, place_other (park, museum, viewpoint, national park), travel_city, video (movie, show), recipe, event
+
+Ambiguous screenshots go to `needs_review`, never to a catch-all category. `product` and `other` were dropped 2026-10-15: `DESIGN.md` had no stamp colour for either, and a wrong save is worse than a `needs_review` save.
 
 ## Skill routing
 

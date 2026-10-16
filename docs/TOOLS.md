@@ -7,7 +7,8 @@ The description of each tool is what the agent reads, so keep descriptions exact
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| id | str | ULID |
+| id | str | uuid4 (stdlib; ULID needed a dependency and sortability is worthless at single-user scale) |
+| source_post_id | str | groups saves that came from the same TikTok post. 84% of real screenshots are several entities from one post, so this is not optional |
 | category | enum | see CLAUDE.md |
 | name | str | the real-world entity name |
 | status | enum | active, needs_review, done, let_go, expired, closed |
@@ -19,6 +20,7 @@ The description of each tool is what the agent reads, so keep descriptions exact
 | details | json | hours, author, runtime, etc. from enrichment |
 | want_score | int | 1 + number of duplicates merged |
 | confidence | float | 0 to 1, from Intake |
+| evidence | str | what Intake actually read to decide. Under 30 words |
 | expires_on | date or null | events and pop-ups |
 | screenshot_ids | list[str] | one save can have several screenshots |
 | created_at, last_suggested_at, done_at | datetime | |
@@ -27,12 +29,13 @@ The description of each tool is what the agent reads, so keep descriptions exact
 
 | Tool | Input | Returns | Notes |
 | --- | --- | --- | --- |
+| add_screenshot | image bytes, filename | Screenshot | the only way an image enters the system; nothing else created one |
 | add_save | Save fields minus id | Save | validates category and status |
 | search_saves | query?, category?, status?, city?, near (lat, lng, km)?, limit | list[Save] | text search on name, why_saved, city |
 | update_save | id, fields | Save | never deletes |
 | get_save | id | Save | |
 | get_screenshot | screenshot_id | image | Intake only |
-| link_duplicate | save_id, screenshot_id | Save | adds screenshot, +1 want_score |
+| link_duplicate | save_id, screenshot_id | Save | adds screenshot, +1 want_score. WARNING: real screenshots are mostly several *different* entities from one post, not repeats of one. Do not fire this on shared `source_post_id`. Untested, no duplicates in the eval set yet |
 
 ## Phase 2 tools: enrichment
 

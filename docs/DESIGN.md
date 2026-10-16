@@ -66,7 +66,7 @@ Inbox (agent questions) is a badge on Today. Agents settings live behind the pro
 ### 2. Library
 - Search bar at top.
 - Category chips (scrollable): All, Books, Food, Shops, Places, Travel, Videos, Recipes, Events.
-- Filters: city, status (Active default, Done, Let go).
+- Filters: city, status (Active default, Done, Let go, Gone). Gone covers `expired` and `closed`, which the Curator sets on Sundays. `needs_review` does not appear here; it surfaces in the Inbox.
 - Masonry grid of screenshot thumbnails, each with the category stamp and name below.
 - Long press: quick actions Done, Let go.
 

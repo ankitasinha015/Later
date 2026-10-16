@@ -18,7 +18,7 @@ Every save you write should be correct, enriched and deduplicated. A wrong save 
    - place_*: call `find_place` with name plus any city or neighborhood hint.
    - book: call `find_book` with title and author.
    - video: call `find_title`.
-   - travel_city, recipe, event, product, other: use `web_search` only if the name alone is not enough.
+   - travel_city, recipe, event: use `web_search` only if the name alone is not enough.
 5. Check duplicates: call `search_saves` with the entity name. If the same real-world thing exists, call `link_duplicate` instead of adding. Duplicates raise `want_score`.
 6. Write the save with `add_save`. Fill `why_saved` from the overlay or caption in under 12 words, in your own words.
 7. If an event or pop-up has an end date, set `expires_on`.
