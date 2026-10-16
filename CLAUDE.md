@@ -59,7 +59,9 @@ Agents never call each other. They share tools and memory.
 - Silence beats a bad suggestion.
 
 ## Categories
-book, place_food (cafe, restaurant, bar, bakery), place_shop, place_other (park, museum, viewpoint, national park), travel_city, video (movie, show), recipe, event
+book, article (Substack post, essay, newsletter, blog post), place_food (cafe, restaurant, bar, bakery), place_shop, place_other (park, museum, viewpoint, national park), travel_city, video (movie, show), recipe, event
+
+`article` is separate from `book` on purpose: a Substack post fits a 15 minute gap, a book needs an evening. The Planner uses that difference. Added 2026-10-15.
 
 Ambiguous screenshots go to `needs_review`, never to a catch-all category. `product` and `other` were dropped 2026-10-15: `DESIGN.md` had no stamp colour for either, and a wrong save is worse than a `needs_review` save.
 

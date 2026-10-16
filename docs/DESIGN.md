@@ -27,6 +27,7 @@ Category stamps (fill at 12% opacity, text at full):
 | Category | Color |
 | --- | --- |
 | book | #3E6FB0 indigo |
+| article | #5B6B8C slate |
 | place_food | #C0702A amber |
 | place_shop | #9B4D8A plum |
 | place_other | #4C8B5A sage |
@@ -65,7 +66,7 @@ Inbox (agent questions) is a badge on Today. Agents settings live behind the pro
 
 ### 2. Library
 - Search bar at top.
-- Category chips (scrollable): All, Books, Food, Shops, Places, Travel, Videos, Recipes, Events.
+- Category chips (scrollable): All, Books, Reads, Food, Shops, Places, Travel, Videos, Recipes, Events.
 - Filters: city, status (Active default, Done, Let go, Gone). Gone covers `expired` and `closed`, which the Curator sets on Sundays. `needs_review` does not appear here; it surfaces in the Inbox.
 - Masonry grid of screenshot thumbnails, each with the category stamp and name below.
 - Long press: quick actions Done, Let go.

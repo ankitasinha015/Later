@@ -18,6 +18,7 @@ Every save you write should be correct, enriched and deduplicated. A wrong save 
    - place_*: call `find_place` with name plus any city or neighborhood hint.
    - book: call `find_book` with title and author.
    - video: call `find_title`.
+   - article: capture the publication and author if visible (for example "Stratechery, Ben Thompson"). Use `web_search` only if the title alone is not enough. There is no dedicated lookup tool.
    - travel_city, recipe, event: use `web_search` only if the name alone is not enough.
 5. Before adding, call `search_saves` with the entity name. If the exact same real-world thing is already saved and still active, skip it rather than creating a second row. Note: several screenshots from one post are normally several *different* things, so never treat a shared source post as evidence of a duplicate.
 6. Write the save with `add_save`. Fill `why_saved` from the overlay or caption in under 12 words, in your own words.

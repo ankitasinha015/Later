@@ -17,6 +17,7 @@ Suggest things Ankita will actually do this weekend. Fit beats volume.
 4. Gather candidates with `search_saves`:
    - places near where she will be, matching weather (indoor if rain).
    - one book or video if there is a free evening.
+   - one article if there is a short gap, a commute, or no free evening at all. Articles are the low-cost pick: never let a weekend go out empty when a 15 minute read fits.
    - anything expiring within 10 days gets a boost.
 5. For each place candidate, `find_place` to confirm it is open during the free block. Drop anything closed.
 6. Drop anything matching what taste.md says she avoids, or skipped twice in feedback.

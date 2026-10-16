@@ -4,6 +4,7 @@ Agents fail quietly. These checks tell you if a prompt change made things better
 
 ## intake/
 - Put 30 of your real screenshots in `evals/intake/images/`. Do NOT force a balanced mix: collect them the way you actually save, and let the distribution tell you about the taxonomy. The first 19 came out 9 book, 4 place_shop, 3 place_food, 2 place_other, 1 travel_city, and zero recipe/event/video. See `evals/intake/manifest.md`.
+- `article` was added 2026-10-15 and has zero examples in the set. Screenshot 3 or 4 Substack posts before trusting any accuracy number for it.
 - Targets: category 95%, name 90% fuzzy (threshold 0.85 on `difflib.SequenceMatcher`), asks under 15%. The ask target is provisional: the first 19 scored 32% because the taxonomy itself is ambiguous, not because Intake is bad.
 - For each, write the right answer in `evals/intake/expected.jsonl`:
   `{"image": "001.png", "category": "book", "name": "Tomorrow, and Tomorrow, and Tomorrow", "city": null}`
