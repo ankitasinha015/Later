@@ -33,3 +33,7 @@ Thumbs.db
 
 # Eval screenshots - personal, this repo is public
 evals/intake/images/
+
+# Derived eval output: regenerate with python -m evals.run_intake
+evals/intake/results.jsonl
+evals/results.html
