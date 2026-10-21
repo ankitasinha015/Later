@@ -54,22 +54,32 @@ video       a film or show
 recipe      something to cook
 event       something with a date that passes
 
-Read these signals, most reliable first:
-1. The search bar at the top. This is what the person was looking for, so it is
-   the strongest evidence of intent.
-2. A location card showing a name, category, price tier, hours or address.
-3. The creator's own pin label naming a place, which appears when there is no
-   location card.
-4. The caption.
+WHERE THE NAME COMES FROM. Use the first of these that is present:
+1. A ranked or titled overlay naming the thing, often large and styled, such as
+   "#6 Bacalar" or "#1 Oaxaca City". The number is the creator's ranking; strip
+   it and keep the name.
+2. A location card, which shows a name with a category, price tier, hours or
+   address beneath it.
+3. The creator's own pin label naming a place.
+4. A book cover, product label or signage legible in the frame.
+5. The caption, if it names the thing directly.
 
-Two things that will mislead you if you let them:
+NEVER take the name from the search bar. The search bar is the person's query,
+not the subject of the frame. One post can show six different places while the
+search bar reads the same text on every frame, so trusting it produces six
+identical wrong answers. The search bar is good evidence for the CATEGORY and
+for why_saved, and is never the name.
 
-- A venue in the location card is often only where the video was filmed, not the
-  thing being saved. If the frame shows a specific book, dish or product, the
-  save is THAT item, not the shop hosting it.
-- The largest text on screen is usually a fragment of the video's running
-  caption, not a name. Single words like "city", "a", "My" are caption
-  fragments. Prefer a pin label or a location card over the biggest text.
+Two more things that will mislead you:
+
+- A venue in the location card is often only where the video was filmed. If the
+  frame shows a specific book, dish or product, the save is THAT item. A post
+  filmed in a bookshop showing four different book covers is four book saves,
+  not four saves of the bookshop. Check for a book cover or product before you
+  reach for the venue.
+- The largest text is often a fragment of the video's running caption rather
+  than a name. Bare words like "city", "a", "My", "and I", or a lone "#" are
+  caption fragments. A titled overlay names something; a fragment does not.
 
 Ignore app chrome entirely: nav bars, comment boxes, like and save counts,
 carousel arrows, "Repost to followers", and advertising overlays.
@@ -81,9 +91,23 @@ Return ONLY a JSON object, no prose and no code fence:
   "confidence": 0.0 to 1.0,
   "evidence": under 30 words, what you actually read to decide}}
 
-Set confidence below {ASK_THRESHOLD} when two readings are equally plausible, when
-the category is genuinely ambiguous, or when the name is cropped or unreadable.
-A low-confidence honest answer is worth more than a confident guess."""
+CONFIDENCE. Judge how certain you are about THIS frame, not how familiar the
+thing is in general.
+
+Go below {ASK_THRESHOLD} only when you genuinely cannot tell: no name source is
+legible, the frame could be two different things, or the category is a real
+coin-flip. A clearly titled book cover or a titled overlay is high confidence
+even if the frame is busy.
+
+Stay high when a name source is legible and unambiguous. Do not lower confidence
+merely because the image is cluttered, because there is app chrome, or because
+you recognise the thing easily.
+
+The categories themselves have known soft edges; treat these as ordinary
+judgement calls rather than reasons to drop confidence:
+- a national park or a wine region is place_other or travel_city, not a failure
+- a venue that is two things at once (a bookshop cafe, a plant nursery wine bar)
+  takes whichever it is primarily visited for"""
 
 
 class IntakeError(RuntimeError):
