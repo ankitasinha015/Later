@@ -158,7 +158,6 @@ def read_screenshot(
     image_bytes = downscale(path)
     encoded = base64.standard_b64encode(image_bytes).decode()
 
-    last_error: Exception | None = None
     for attempt in range(retries + 1):
         try:
             response = client.messages.create(
@@ -178,12 +177,9 @@ def read_screenshot(
             )
             break
         except (anthropic.APIConnectionError, anthropic.RateLimitError) as exc:
-            last_error = exc
             if attempt == retries:
                 raise IntakeError(f"{path.name}: {type(exc).__name__} after {retries + 1} tries") from exc
             time.sleep(2 ** attempt)
-    else:  # pragma: no cover
-        raise IntakeError(f"{path.name}: {last_error}")
 
     raw = _first_text(response).strip()
     if raw.startswith("```"):

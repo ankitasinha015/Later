@@ -28,7 +28,7 @@ from dotenv import load_dotenv
 REPO = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 
-from backend.intake import IntakeError, build_client, read_screenshot  # noqa: E402
+from backend.intake import MODEL, IntakeError, build_client, read_screenshot  # noqa: E402
 
 IMAGES = REPO / "evals" / "intake" / "images"
 EXPECTED = REPO / "evals" / "intake" / "expected.jsonl"
